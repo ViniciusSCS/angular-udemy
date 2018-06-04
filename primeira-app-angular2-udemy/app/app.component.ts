@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     template: `
         <h1>My First Angular 2 App!!</h1>
         
-        <contatos-list></contatos-list>
+        <router-outlet></router-outlet>
     `
 })
 
