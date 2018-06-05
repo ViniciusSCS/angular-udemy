@@ -4,6 +4,9 @@ import { ActivatedRoute, Params } from "@angular/router";
 
 import { ContatosService } from "./contatos.service";
 
+/**
+ * Decorator da Classe.
+ */
 @Component({
     moduleId: module.id,
     selector: 'contatos-detail',
