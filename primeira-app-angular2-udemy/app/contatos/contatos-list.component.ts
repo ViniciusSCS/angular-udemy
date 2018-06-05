@@ -11,6 +11,11 @@ import { ContatosService } from './contatos.service';
 export class ContatosListComponent implements OnInit {
     contatos: Contatos[];
 
+    /**
+     * Construtor da Classe. Sistema de injeção de dependências do Angular 2.
+     * 
+     * @param contatoService 
+     */
     constructor(private contatoService: ContatosService) {}
 
     ngOnInit(): void {
