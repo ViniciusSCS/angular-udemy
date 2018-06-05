@@ -2,6 +2,9 @@ import { Injectable } from "@angular/core";
 import { Contatos } from "./contatos";
 import { CONTATOS } from "./contatos-mock";
 
+/**
+ * Decorator da Classe.
+ */
 @Injectable()
 
 export class ContatosService {

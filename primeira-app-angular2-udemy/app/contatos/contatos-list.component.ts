@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Contatos } from './contatos';
 import { ContatosService } from './contatos.service';
 
+/**
+ * Decorator da Classe.
+ */
 @Component({
     moduleId: module.id,
     selector: 'contatos-list',
