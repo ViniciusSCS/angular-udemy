@@ -12,6 +12,10 @@ const contatoRoutes: Routes = [
     {
         path: 'contato/save',
         component: ContatosDetailComponent,
+    },
+    {
+        path: 'contato/save/:id',
+        component: ContatosDetailComponent,
     }
 ];
 
@@ -19,6 +23,9 @@ const contatoRoutes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forChild(contatoRoutes)
+    ],
+    exports: [
+        RouterModule
     ]
 })
 
