@@ -7,9 +7,24 @@ import { CONTATOS } from "./contatos-mock";
  */
 @Injectable()
 
+
 export class ContatosService {
+    
+    /**
+     * Retorna a lista de contatos.
+     */
     getContatos(): Promise<Contatos[]> {
         return Promise.resolve(CONTATOS);
+    }
+
+    /**
+     * Busca o contato por 'id' e retorna os dados para serem alterados.
+     * 
+     * @param id 
+     */
+    getContatosPorId(id: number): Promise<Contatos> {
+        return this.getContatos()
+            .then((contato: Contatos[]) => contato.find(contato => contato.id === id));
     }
 
     getContatosSlowly(): Promise<Contatos[]> {

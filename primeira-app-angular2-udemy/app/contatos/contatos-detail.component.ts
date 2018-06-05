@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 
 import { ContatosService } from "./contatos.service";
+import { Contatos } from "./contatos";
 
 /**
  * Decorator da Classe.
@@ -34,6 +35,11 @@ export class ContatosDetailComponent implements OnInit {
             let id: number = +params['id'];
 
             console.log(id);
+
+            this.contatoService.getContatosPorId(id)
+                .then((contato: Contatos) => {
+                    console.log(contato);
+                })
         });
     }
 
