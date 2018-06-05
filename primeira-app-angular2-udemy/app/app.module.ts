@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 
@@ -8,9 +9,10 @@ import { ContatosModule } from './contatos/contatos.module';
 
 @NgModule({
     imports: [
-        AppRoutingModule,
+        HttpModule,
         BrowserModule,
-        ContatosModule
+        ContatosModule,
+        AppRoutingModule,
     ],
     declarations: [AppComponent],
     bootstrap: [AppComponent],

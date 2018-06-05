@@ -20,9 +20,8 @@ export class ContatosListComponent implements OnInit {
      * @param contatoService 
      */
     constructor(private contatoService: ContatosService) {}
-
+    
     ngOnInit(): void {
-        // this.contatos = this.contatoService.getContatos();
         this.contatoService.getContatos()
             .then((contatos: Contatos[]) => {
                 this.contatos = contatos;

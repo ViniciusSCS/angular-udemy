@@ -15,7 +15,10 @@ import { Contatos } from "./contatos";
 })
 
 export class ContatosDetailComponent implements OnInit {
-    
+
+    contato: Contatos;
+    private isNew: boolean = true;
+
     /**
      * Construtor da Classe. Sistema de injeção de dependências do Angular 2. 
      * 
@@ -27,20 +30,48 @@ export class ContatosDetailComponent implements OnInit {
         private location: Location,
         private route: ActivatedRoute,
         private contatoService: ContatosService
-    ) {}
+    ) { }
 
     ngOnInit(): void {
-        console.log('on init')
+        this.contato = new Contatos(0, '', '', '');
+
         this.route.params.forEach((params: Params) => {
             let id: number = +params['id'];
 
-            console.log(id);
+            if (id) {
 
-            this.contatoService.getContatosPorId(id)
-                .then((contato: Contatos) => {
-                    console.log(contato);
-                })
+                this.isNew = false;
+
+                this.contatoService.getContatosPorId(id)
+                    .then((contato: Contatos) => {
+                        this.contato = contato;
+                    })
+            }
         });
+    }
+
+    getFormGroupClass(isValid: boolean, isPristine: boolean): {} {
+        return {
+            'form-group': true,
+            'has-danger': !isValid && !isPristine,
+            'has-success': isValid && !isPristine
+        };
+    }
+
+    getFormControlClass(isValid: boolean, isPristine: boolean): {} {
+        return {
+            'form-control': true,
+            'form-control-danger': !isValid && !isPristine,
+            'form-control-success': isValid && !isPristine
+        };
+    }
+
+    onSubmit(): void {
+        if(this.isNew) {
+            console.log('cadastrar novo contato')
+        }else {
+            console.log('alterar contato')
+        }
     }
 
 }
