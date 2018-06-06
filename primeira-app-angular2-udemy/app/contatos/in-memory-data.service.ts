@@ -89,31 +89,31 @@ export class InMemoryDataService implements InMemoryDbService {
                 id: 14,
                 nome: 'Fulano de Tal',
                 email: 'fulano@email.com',
-                telefone: '(00) 0000-0000'
+                telefone: '(00) 0001-0000'
             },
             {
                 id: 15,
                 nome: 'Ciclano',
                 email: 'ciclano@email.com',
-                telefone: '(00) 0000-0000'
+                telefone: '(00) 0010-0000'
             },
             {
                 id: 16,
                 nome: 'Escatamaquio',
                 email: 'escatamaquio@email.com',
-                telefone: '(00) 0000-0000'
+                telefone: '(00) 0100-0000'
             },
             {
                 id: 17,
                 nome: 'Seu madruga',
                 email: 'madruga@email.com',
-                telefone: '(00) 0000-0000'
+                telefone: '(00) 1000-0000'
             },
             {
                 id: 18,
                 nome: 'Bob Esponja',
                 email: 'bob@email.com',
-                telefone: '(00) 0000-0000'
+                telefone: '(00) 0000-1111'
             },
         ];
 
