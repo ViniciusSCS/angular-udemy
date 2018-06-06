@@ -25,6 +25,8 @@ export class ContatosListComponent implements OnInit {
         this.contatoService.getContatos()
             .then((contatos: Contatos[]) => {
                 this.contatos = contatos;
-            }).catch(err => console.log(err));
+            }).catch(err => {
+                
+            });
     }
 }

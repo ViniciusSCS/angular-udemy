@@ -33,7 +33,7 @@ export class ContatosDetailComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.contato = new Contatos(0, '', '', '');
+        this.contato = new Contatos('', '', '');
 
         this.route.params.forEach((params: Params) => {
             let id: number = +params['id'];
@@ -67,11 +67,23 @@ export class ContatosDetailComponent implements OnInit {
     }
 
     onSubmit(): void {
-        if(this.isNew) {
-            console.log('cadastrar novo contato')
-        }else {
+        let promise: Promise<Contatos>;
+
+        if (this.isNew) {
+            console.log('cadastrar novo contato');
+            promise = this.contatoService.create(this.contato);
+        } else {
             console.log('alterar contato')
         }
+
+        promise.then(contato => this.goBack());
+    }
+
+    /**
+     * Volta para a pagina anterior
+     */
+    goBack(): void {
+        this.location.back();
     }
 
 }
