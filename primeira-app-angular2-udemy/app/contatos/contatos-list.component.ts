@@ -3,7 +3,7 @@ import { Contatos } from './contatos';
 import { ContatosService } from './contatos.service';
 
 /**
- * Decorator da Classe.
+ * Decorator da Classe de serviço.
  */
 @Component({
     moduleId: module.id,

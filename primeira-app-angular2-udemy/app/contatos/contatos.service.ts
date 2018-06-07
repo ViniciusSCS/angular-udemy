@@ -14,7 +14,7 @@ import { CONTATOS } from "./contatos-mock";
 export class ContatosService {
 
     private apiUrl: string = 'app/contatos';
-    private headers: Headers = new Headers({'Content-Type': 'application/json'});
+    private headers: Headers = new Headers({ 'Content-Type': 'application/json' });
 
     /**
      * Construtor da Classe. Sistema de injeção de dependências do Angular 2.
@@ -38,7 +38,7 @@ export class ContatosService {
     /**
      * Busca o contato por 'id' e retorna os dados para serem alterados.
      * 
-     * @param id 
+     * @param id
      */
     getContatosPorId(id: number): Promise<Contatos> {
         return this.getContatos()
@@ -69,7 +69,7 @@ export class ContatosService {
     /**
      * Salva um novo contato na lista.
      * 
-     * @param contato 
+     * @param contato
      */
     create(contato: Contatos): Promise<Contatos> {
         return this.http
@@ -80,9 +80,38 @@ export class ContatosService {
     }
 
     /**
+     * Atualiza o contato na lista
+     * 
+     * @param contato
+     */
+    update(contato: Contatos): Promise<Contatos> {
+        const url = `${this.apiUrl}/${contato.id}`;
+
+        return this.http
+            .put(url, JSON.stringify(contato), { headers: this.headers })
+            .toPromise()
+            .then(() => contato as Contatos)
+            .catch(this.handleError);
+    }
+
+    /**
+     * Deleta o contato da lista.
+     * 
+     * @param contato
+     */
+    delete(contato: Contatos): Promise<Contatos> {
+        const url = `${this.apiUrl}/${contato.id}`;
+        return this.http
+            .delete(url, { headers: this.headers })
+            .toPromise()
+            .then(() => contato as Contatos)
+            .catch(this.handleError);
+    }
+
+    /**
      * Fornece um gancho para manipulação de exceção centralizada.
      * 
-     * @param err 
+     * @param err
      */
     private handleError(err: any): Promise<any> {
         return Promise.reject(err.message || err);

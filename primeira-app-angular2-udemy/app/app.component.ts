@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/**
+ * Decora a classe de serviço.
+ */
 @Component({
     moduleId: module.id,
     selector: 'my-app',

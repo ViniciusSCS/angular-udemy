@@ -6,7 +6,7 @@ import { ContatosService } from "./contatos.service";
 import { Contatos } from "./contatos";
 
 /**
- * Decorator da Classe.
+ * Decorator da Classe de serviço.
  */
 @Component({
     moduleId: module.id,
@@ -73,7 +73,8 @@ export class ContatosDetailComponent implements OnInit {
             console.log('cadastrar novo contato');
             promise = this.contatoService.create(this.contato);
         } else {
-            console.log('alterar contato')
+            console.log('alterar contato');
+            promise = this.contatoService.update(this.contato);
         }
 
         promise.then(contato => this.goBack());
