@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ContatosModule } from './contatos/contatos.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './contatos/in-memory-data.service';
+import { DaialogService } from './dialog.service';
 
 @NgModule({
     imports: [
@@ -18,6 +19,7 @@ import { InMemoryDataService } from './contatos/in-memory-data.service';
         InMemoryWebApiModule.forRoot(InMemoryDataService)
     ],
     declarations: [AppComponent],
+    providers: [DaialogService],
     bootstrap: [AppComponent],
     
 })
