@@ -4,6 +4,14 @@
         <div class="col-md-12">
             <h2>Meus Contatos</h2>
 
+            <div [ngClass]="classessCss" role="alert" *ngIf="mensagem">
+                <span [ngSwitch]="mensagem.tipo">
+                    <strong *ngSwitchCase="'danger'">Erro!</strong>
+                    <strong *ngSwitchCase="'success'">Sucesso!</strong>
+                </span>
+                {{ mensagem.texto }}
+            </div>
+
             <a routerLink="/contato/save" class="btn btn-success">Novo</a>
 
             <table class="table table-striped table-hover">
@@ -18,6 +26,9 @@
                 </thead>
 
                 <tbody>
+                    <tr *ngIf="contatos == 0">
+                        <td colspan="5" align="center">Nenhuma informação encontrada</td>
+                    </tr>
                     <tr *ngFor="let contato of contatos">
                         <td>{{ contato.id }}</td>
                         <td>{{ contato.nome }}</td>
@@ -35,9 +46,6 @@
                             </button>
                         </td>
                     </tr>
-                </tbody>
-                <tbody *ngIf="contatos == 0">
-                    <span>Nenhuma informação encontrada</span>
                 </tbody>
 
             </table>

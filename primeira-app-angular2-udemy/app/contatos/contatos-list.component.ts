@@ -15,6 +15,9 @@ import { ContatosService } from './contatos.service';
 
 export class ContatosListComponent implements OnInit {
     contatos: Contatos[];
+    classessCss: {};
+    mensagem: {};
+    private currentTimeout: any;
 
     /**
      * Construtor da Classe. Sistema de injeção de dependências do Angular 2.
@@ -46,10 +49,38 @@ export class ContatosListComponent implements OnInit {
                         .then((contato) => {
                             this.contatos = this.contatos.filter((c: Contatos) => c.id != contato.id);
 
+                            this.mostrarMensagem({
+                                tipo: 'success',
+                                texto: 'Contato deletado com sucesso!'
+                            });
                         }).catch(err => {
                             console.log(err);
+                            this.mostrarMensagem({
+                                tipo: 'success',
+                                texto: 'Ocorreu um erro ao deletar um contato!'
+                            });
                         });
                 }
             });
+    }
+
+    private mostrarMensagem(mensagem: { tipo: string, texto: string }): void {
+        this.mensagem = mensagem;
+        this.montarClasses(mensagem.tipo);
+
+        if(this.currentTimeout) {
+            clearTimeout(this.currentTimeout);
+        }
+
+        this.currentTimeout = setTimeout(() => {
+            this.mensagem = undefined;
+        }, 3000);
+    }
+
+    private montarClasses(tipo: string): void {
+        this.classessCss = {
+            'alert': true,
+        };
+        this.classessCss['alert-' + tipo] = true;
     }
 }
