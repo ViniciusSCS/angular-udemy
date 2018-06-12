@@ -12,14 +12,14 @@
 
         <div [ngClass]="getFormGroupClass(telefone.valid, telefone.pristine)">
             <label for="telefone">Telefone</label>
-            <input type="text" [ngClass]="getFormControlClass(telefone.valid, telefone.pristine)" #telefone="ngModel" name="telefone"
+            <input type="tel" maxlength="15" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}$" [ngClass]="getFormControlClass(telefone.valid, telefone.pristine)" #telefone="ngModel" name="telefone"
                 [(ngModel)]="contato.telefone" required>
             <div class="form-control-feedback" [hidden]="telefone.valid || telefone.pristine">O campo telefone é obrigatório</div>
         </div>
 
         <div [ngClass]="getFormGroupClass(email.valid, email.pristine)">
             <label for="email">Email</label>
-            <input type="email" [ngClass]="getFormControlClass(email.valid, email.pristine)" #email="ngModel" name="email"
+            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [ngClass]="getFormControlClass(email.valid, email.pristine)" #email="ngModel" name="email"
                 [(ngModel)]="contato.email" required>
             <div class="form-control-feedback" [hidden]="email.valid || email.pristine">O campo email é obrigatório</div>
         </div>
