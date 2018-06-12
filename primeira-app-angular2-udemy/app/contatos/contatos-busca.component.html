@@ -4,8 +4,8 @@
             <h3>Busca</h3>
 
             <div class="form-group">
-                <input type="search" class="form-control">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <label for="search"></label>
+                <input type="search" class="form-control" #searchBox (keyup)="search(searchBox.value)">
             </div>
 
         </div>

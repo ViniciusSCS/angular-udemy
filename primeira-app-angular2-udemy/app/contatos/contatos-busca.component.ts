@@ -10,4 +10,8 @@ export class ContatosBusca implements OnInit {
     constructor() { }
 
     ngOnInit() { }
+
+    search(termo: string): void {
+        console.log(termo);
+    }
 }

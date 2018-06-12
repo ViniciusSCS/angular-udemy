@@ -4,6 +4,7 @@ import { Http, Headers, Response } from "@angular/http";
 import { Injectable } from "@angular/core";
 import { Contatos } from "./contatos";
 import { CONTATOS } from "./contatos-mock";
+import { Observable } from 'rxjs';
 
 /**
  * Decorator da Classe.
@@ -115,5 +116,11 @@ export class ContatosService {
      */
     private handleError(err: any): Promise<any> {
         return Promise.reject(err.message || err);
+    }
+
+    search(term: string): Observable<Contatos[]> {
+        return this.http
+            .get(`${this.apiUrl}/?nome=${term}`)
+            .map((resp: Response) => resp.json().data as Contatos[]);
     }
 }
