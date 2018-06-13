@@ -14,24 +14,34 @@ export class ContatosBusca implements OnInit {
     contatos: Observable<Contatos[]>;
     private termosDaBusca: Subject<string> = new Subject<string>();
 
+    /**
+     * Construtor da classe.
+     * 
+     * @param contatosService 
+     */
     constructor(
         private contatosService: ContatosService
     ) { }
 
     ngOnInit(): void {
         this.contatos = this.termosDaBusca
+            .debounceTime(500) // Aguarde por Xms para emitir novos eventos.
+            .distinctUntilChanged() //Ignore se o próximo termo de busca for igual ao anterior.
             .switchMap(termo => {
                 console.log('Fez a busca: ', termo);
                 return termo ? this.contatosService.search(termo) : Observable.of<Contatos[]>([]);
+            }).catch(err => {
+                console.log(err);
+                return Observable.of<Contatos[]>([]);
             });
-        
-            this.contatos.subscribe((contatos: Contatos[]) => {
-                console.log('retornou do servidor: ', contatos)
-            })
+
+        this.contatos.subscribe((contatos: Contatos[]) => {
+            console.log('retornou do servidor: ', contatos)
+        })
     }
 
     search(termo: string): void {
-        console.log(termo);
+        // console.log(termo);
         this.termosDaBusca.next(termo);
     }
 }
