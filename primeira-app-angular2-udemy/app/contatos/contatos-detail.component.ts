@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from "@angular/router";
 
 import { ContatosService } from "./contatos.service";
 import { Contatos } from "./contatos";
+import { ContatosListComponent } from "./contatos-list.component";
 
 /**
  * Decorator da Classe de serviço.
@@ -29,7 +30,8 @@ export class ContatosDetailComponent implements OnInit {
     constructor(
         private location: Location,
         private route: ActivatedRoute,
-        private contatoService: ContatosService
+        private contatoService: ContatosService,
+        private contatosList: ContatosListComponent
     ) { }
 
     ngOnInit(): void {
@@ -78,6 +80,12 @@ export class ContatosDetailComponent implements OnInit {
         }
 
         promise.then(contato => this.goBack());
+    }
+
+    isLocal(): void {
+        if (this.contatosList.verDetalhe) {
+            'disabled';
+        }
     }
 
     /**

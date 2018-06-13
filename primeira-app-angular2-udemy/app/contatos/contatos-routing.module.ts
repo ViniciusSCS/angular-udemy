@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, Component } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ContatosListComponent } from "./contatos-list.component";
 import { ContatosDetailComponent } from "./contatos-detail.component";
@@ -16,6 +16,10 @@ const contatoRoutes: Routes = [
     {
         path: 'contato/save/:id',
         component: ContatosDetailComponent,
+    },
+    {
+        path: 'contato/visualizar/:id',
+        component: ContatosDetailComponent
     }
 ];
 

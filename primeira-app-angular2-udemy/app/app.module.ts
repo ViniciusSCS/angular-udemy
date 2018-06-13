@@ -13,18 +13,18 @@ import { InMemoryDataService } from './contatos/in-memory-data.service';
 import { DaialogService } from './dialog.service';
 
 @NgModule({
-    imports: [
-        HttpModule,
-        BrowserModule,
-        ContatosModule,
-        AppRoutingModule,
-        InMemoryWebApiModule.forRoot(InMemoryDataService)
-    ],
-    declarations: [AppComponent],
-    providers: [DaialogService],
-    bootstrap: [AppComponent],
-    
+	imports: [
+		HttpModule,
+		BrowserModule,
+		ContatosModule,
+		AppRoutingModule,
+		InMemoryWebApiModule.forRoot(InMemoryDataService)
+	],
+	declarations: [AppComponent],
+	providers: [DaialogService],
+	bootstrap: [AppComponent],
+
 })
 
 
-export class AppModule {}
+export class AppModule { }

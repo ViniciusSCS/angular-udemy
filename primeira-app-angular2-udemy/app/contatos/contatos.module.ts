@@ -24,7 +24,8 @@ import { ContatosDetailComponent } from './contatos-detail.component';
         ContatosListComponent
     ],
     providers: [
-        ContatosService
+        ContatosService,
+        ContatosListComponent
     ]
 })
 
