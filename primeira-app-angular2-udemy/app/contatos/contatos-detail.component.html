@@ -7,7 +7,7 @@
             <label for="nome" class="form-control-label">Nome</label>
             <input type="text" [ngClass]="getFormControlClass(nome.valid, nome.pristine)" #nome="ngModel" name="nome"
                 (disabled)="isLocal()"
-                [(ngModel)]="contato.nome" disabled required>
+                [(ngModel)]="contato.nome" required>
             <div class="form-control-feedback" [hidden]="nome.valid || nome.pristine">O campo nome é obrigatório</div>
         </div>
 
