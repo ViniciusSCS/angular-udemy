@@ -16,3 +16,5 @@ _temp
 !wallaby.js
 
 debug.log
+
+package-lock.jason
