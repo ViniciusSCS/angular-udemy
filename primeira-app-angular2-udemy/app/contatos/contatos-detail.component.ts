@@ -84,6 +84,7 @@ export class ContatosDetailComponent implements OnInit {
 
     isLocal(): void {
         if (this.contatosList.verDetalhe) {
+            console.log(this.contatosList.verDetalhe)
             'disabled';
         }
     }
