@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Contatos } from './contatos';
 import { ContatosService } from './contatos.service';
@@ -9,8 +9,9 @@ import { ContatosService } from './contatos.service';
     templateUrl: 'contatos-busca.component.html'
 })
 
-export class ContatosBusca implements OnInit {
+export class ContatosBusca implements OnInit, OnChanges {
 
+    @Input() buscar: string;
     contatos: Observable<Contatos[]>;
     private termosDaBusca: Subject<string> = new Subject<string>();
 
@@ -40,8 +41,14 @@ export class ContatosBusca implements OnInit {
         // })
     }
 
+    ngOnChanges(changes: SimpleChanges): void {
+        let buscar: SimpleChange = changes['buscar'];
+        this.search(buscar.currentValue);
+    }
+
     search(termo: string): void {
         // console.log(termo);
         this.termosDaBusca.next(termo);
     }
+
 }
